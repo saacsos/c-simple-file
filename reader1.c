@@ -1,15 +1,19 @@
 #include <stdio.h>
-#include <string.h>
 
 int main() {
     FILE* fp;
-    char line[100];
+    char line[100], word[30];
+    int number, total = 0;
 
     fp = fopen("data.in", "r");
     while (fgets(line, 100, fp) != NULL) {
-        line[strlen(line) - 1] = '\0';
         printf(">>%s<<\n", line);
+        sscanf(line, "%s %d", word, &number);
+        printf("------%s(%d)-----\n", word, number);
+        total += number;
     }
+
+    printf("Total is %d\n", total);
 
     fclose(fp);
 }
